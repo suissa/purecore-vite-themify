@@ -1,0 +1,328 @@
+{
+  "theme": {
+    "name": "Monokai Pro (Classic)",
+    "version": "1.0.0",
+    "description": "Tema Monokai Pro Classic - Um tema escuro elegante e profissional baseado no Monokai Pro para editores e aplicações",
+    "author": "Monokai Pro"
+  },
+  "colors": {
+    "primary": {
+      "main": "#66d9ef",
+      "dark": "#4fc3d9",
+      "light": "#8be9fd",
+      "hover": "#52c4d9"
+    },
+    "secondary": {
+      "main": "#a6e22e",
+      "dark": "#8bc34a",
+      "light": "#b8f554"
+    },
+    "accent": {
+      "main": "#ab9df2",
+      "dark": "#9575cd",
+      "light": "#c5b3ff"
+    },
+    "background": {
+      "primary": "#272822",
+      "secondary": "#1d1e19",
+      "tertiary": "#161613",
+      "currentLine": "#3b3c35",
+      "selection": "#3b3c35",
+      "gradient": "linear-gradient(135deg, #1d1e19 0%, #272822 100%)"
+    },
+    "text": {
+      "primary": "#fdfff1",
+      "secondary": "#c0c1b5",
+      "muted": "#919288",
+      "accent": "#66d9ef",
+      "comment": "#6e7066"
+    },
+    "border": {
+      "primary": "#57584f",
+      "accent": "#66d9ef",
+      "secondary": "#a6e22e"
+    },
+    "semantic": {
+      "red": "#f92672",
+      "orange": "#fd971f",
+      "yellow": "#a9dc76",
+      "green": "#a6e22e",
+      "blue": "#66d9ef",
+      "purple": "#ab9df2",
+      "pink": "#f92672"
+    },
+    "base": {
+      "base0": "#161613",
+      "base1": "#1d1e19",
+      "base2": "#272822",
+      "base3": "#3b3c35",
+      "base4": "#57584f",
+      "base5": "#6e7066",
+      "base6": "#919288",
+      "base7": "#c0c1b5",
+      "base8": "#fdfff1"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "primary": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif",
+      "secondary": "'Fira Code', 'Consolas', 'Monaco', monospace",
+      "system": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif"
+    },
+    "sizes": {
+      "xs": "0.75rem",
+      "sm": "0.875rem",
+      "base": "1rem",
+      "lg": "1.25rem",
+      "xl": "1.5rem",
+      "2xl": "2rem",
+      "3xl": "2.5rem",
+      "4xl": "3rem",
+      "5xl": "4.5rem"
+    },
+    "weights": {
+      "light": 300,
+      "normal": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700,
+      "extrabold": 800,
+      "black": 900
+    },
+    "lineHeights": {
+      "tight": 1.1,
+      "normal": 1.5,
+      "relaxed": 1.8
+    },
+    "letterSpacing": {
+      "tight": "-0.025em",
+      "normal": "0",
+      "wide": "0.025em",
+      "wider": "0.05em",
+      "widest": "0.1em"
+    }
+  },
+  "spacing": {
+    "px": "1px",
+    "1": "0.25rem",
+    "2": "0.5rem",
+    "3": "0.75rem",
+    "4": "1rem",
+    "5": "1.25rem",
+    "6": "1.5rem",
+    "8": "2rem",
+    "10": "2.5rem",
+    "12": "3rem",
+    "16": "4rem",
+    "20": "5rem",
+    "24": "6rem",
+    "32": "8rem"
+  },
+  "borderRadius": {
+    "none": "0",
+    "sm": "0.125rem",
+    "md": "0.375rem",
+    "lg": "0.5rem",
+    "xl": "0.75rem",
+    "2xl": "1rem",
+    "3xl": "1.5rem",
+    "full": "9999px"
+  },
+  "shadows": {
+    "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.3)",
+    "md": "0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3)",
+    "lg": "0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3)",
+    "xl": "0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3)",
+    "glow": {
+      "primary": "0 0 20px rgba(102, 217, 239, 0.4)",
+      "secondary": "0 0 20px rgba(166, 226, 46, 0.4)",
+      "accent": "0 0 20px rgba(171, 157, 242, 0.4)",
+      "blue": "0 0 20px rgba(102, 217, 239, 0.4)",
+      "green": "0 0 20px rgba(166, 226, 46, 0.4)",
+      "purple": "0 0 20px rgba(171, 157, 242, 0.4)",
+      "red": "0 0 20px rgba(249, 38, 114, 0.4)",
+      "orange": "0 0 20px rgba(253, 151, 31, 0.4)"
+    }
+  },
+  "animations": {
+    "duration": {
+      "fast": "150ms",
+      "normal": "300ms",
+      "slow": "500ms",
+      "slower": "700ms"
+    },
+    "easing": {
+      "linear": "linear",
+      "in": "ease-in",
+      "out": "ease-out",
+      "inOut": "ease-in-out",
+      "bounce": "cubic-bezier(0.68, -0.55, 0.265, 1.55)"
+    },
+    "keyframes": {
+      "scan": "@keyframes scan { 0% { transform: translateY(0); } 100% { transform: translateY(100vh); } }",
+      "shimmer": "@keyframes shimmer { 100% { left: 100%; } }",
+      "pulse": "@keyframes pulse { 0%, 100% { opacity: 1; transform: scaleX(1); } 50% { opacity: 0.5; transform: scaleX(0.95); } }",
+      "rotate": "@keyframes rotate { 100% { transform: rotate(360deg); } }",
+      "slideUp": "@keyframes slideUp { from { opacity: 0; transform: translateY(50px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }",
+      "fadeIn": "@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }"
+    },
+    "pageTransition": {
+      "initial": { "opacity": 0, "y": 50 },
+      "animate": { "opacity": 1, "y": 0 },
+      "exit": { "opacity": 0, "y": -50 },
+      "transition": {
+        "duration": 0.4,
+        "ease": [0.22, 1, 0.36, 1]
+      }
+    },
+    "contentTransition": {
+      "initial": { "opacity": 0, "scale": 0.8, "z": -100 },
+      "animate": { "opacity": 1, "scale": 1, "z": 0 },
+      "exit": { "opacity": 0, "scale": 0.8, "z": -100 },
+      "transition": {
+        "duration": 0.5,
+        "delay": 0,
+        "ease": [0.34, 1.56, 0.64, 1],
+        "scale": {
+          "type": "spring",
+          "damping": 15,
+          "stiffness": 200,
+          "restDelta": 0.001
+        }
+      }
+    }
+  },
+  "components": {
+    "button": {
+      "primary": {
+        "base": "bg-blue-500 text-gray-900 font-bold px-8 py-4 border-none cursor-pointer text-base relative overflow-hidden transition-all duration-300 rounded-lg",
+        "hover": "transform -translate-y-1 shadow-glow-blue bg-blue-600",
+        "before": "absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500",
+        "hoverBefore": "left-full"
+      },
+      "secondary": {
+        "base": "bg-transparent text-green-400 border-2 border-green-400 px-8 py-4 cursor-pointer text-base transition-all duration-300 rounded-lg",
+        "hover": "bg-green-400 text-gray-900 transform -translate-y-1 shadow-glow-green"
+      },
+      "accent": {
+        "base": "bg-purple-500 text-white font-bold px-8 py-4 border-none cursor-pointer text-base relative overflow-hidden transition-all duration-300 rounded-lg",
+        "hover": "transform -translate-y-1 shadow-glow-purple bg-purple-600"
+      },
+      "danger": {
+        "base": "bg-red-500 text-white font-bold px-8 py-4 border-none cursor-pointer text-base relative overflow-hidden transition-all duration-300 rounded-lg",
+        "hover": "transform -translate-y-1 shadow-glow-red bg-red-600"
+      }
+    },
+    "card": {
+      "base": "bg-base2/50 border border-base4 p-8 relative overflow-hidden transition-all duration-300 rounded-lg",
+      "hover": "transform -translate-y-2 scale-102 border-blue-500 shadow-glow-blue"
+    },
+    "badge": {
+      "primary": "bg-blue-500 text-gray-900 text-xs font-bold px-3 py-1 rounded uppercase tracking-wider",
+      "secondary": "bg-green-500 text-gray-900 text-xs font-bold px-3 py-1 rounded uppercase tracking-wider",
+      "accent": "bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider",
+      "warning": "bg-orange-500 text-gray-900 text-xs font-bold px-3 py-1 rounded uppercase tracking-wider",
+      "danger": "bg-red-500 text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider"
+    },
+    "input": {
+      "base": "bg-base2/50 border-2 border-base4 text-base8 px-4 py-3 focus:border-blue-400 focus:outline-none transition-colors duration-300 rounded",
+      "placeholder": "text-base5"
+    },
+    "modal": {
+      "overlay": "fixed inset-0 bg-base0/90 backdrop-blur-xl z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300",
+      "overlayActive": "opacity-100 pointer-events-auto",
+      "container": "bg-base2 border-2 border-blue-500 max-w-4xl max-h-90vh overflow-y-auto p-12 relative rounded-lg",
+      "close": "absolute top-6 right-6 bg-transparent border-2 border-blue-400 text-blue-400 w-12 h-12 cursor-pointer transition-all duration-300 font-bold text-xl rounded",
+      "closeHover": "bg-blue-400 text-gray-900 rotate-90"
+    },
+    "navigation": {
+      "sidenav": "fixed left-0 top-0 h-screen w-20 bg-base1/90 backdrop-blur-xl border-r border-blue-500/30 z-50 transition-all duration-300",
+      "dot": "w-3 h-3 rounded-full border-2 border-blue-400 bg-transparent cursor-pointer transition-all duration-400",
+      "dotHover": "bg-blue-400 scale-150 shadow-glow-blue",
+      "dotActive": "bg-blue-400 shadow-glow-blue scale-125",
+      "tooltip": "absolute left-8 top-1/2 -translate-y-1/2 bg-blue-400 text-gray-900 px-3 py-1.5 rounded text-sm font-semibold whitespace-nowrap opacity-0 pointer-events-none transition-opacity duration-300"
+    }
+  },
+  "utilities": {
+    "clipPath": {
+      "button": "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
+      "card": "polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px)",
+      "modal": "polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px)"
+    },
+    "gradient": {
+      "text": "bg-gradient-to-r from-blue-400 via-green-400 to-purple-400 bg-clip-text text-transparent",
+      "primary": "bg-gradient-to-r from-blue-500 to-blue-400",
+      "secondary": "bg-gradient-to-r from-green-500 to-green-400",
+      "accent": "bg-gradient-to-r from-purple-500 to-purple-400",
+      "hero": "radial-gradient(ellipse at top right, rgba(102, 217, 239, 0.15) 0%, transparent 50%), radial-gradient(ellipse at bottom left, rgba(166, 226, 46, 0.1) 0%, transparent 50%), #272822"
+    },
+    "backdrop": {
+      "blur": "backdrop-blur-xl"
+    }
+  },
+  "breakpoints": {
+    "sm": "640px",
+    "md": "768px",
+    "lg": "1024px",
+    "xl": "1280px",
+    "2xl": "1536px"
+  },
+  "zIndex": {
+    "dropdown": 1000,
+    "sticky": 1020,
+    "fixed": 1030,
+    "modalBackdrop": 1040,
+    "modal": 1050,
+    "popover": 1060,
+    "tooltip": 1070,
+    "toast": 1080
+  },
+  "semanticClasses": {
+    "hero": {
+      "section": "section hero-section",
+      "title": "hero-title",
+      "subtitle": "hero-subtitle",
+      "gradientText": "gradient-text"
+    },
+    "card": {
+      "container": "technique-card",
+      "title": "technique-title",
+      "description": "technique-summary",
+      "badge": "technique-badge",
+      "icon": "technique-icon",
+      "number": "technique-number"
+    },
+    "navigation": {
+      "container": "nav-dots",
+      "item": "nav-dot",
+      "tooltip": "tooltip",
+      "active": "active"
+    },
+    "modal": {
+      "overlay": "modal-overlay",
+      "container": "modal-container",
+      "close": "modal-close",
+      "content": "modal-content"
+    },
+    "form": {
+      "input": "input-primary",
+      "button": "btn-primary",
+      "textarea": "textarea-primary"
+    },
+    "layout": {
+      "container": "container mx-auto px-12",
+      "grid": "techniques-grid",
+      "section": "section",
+      "header": "section-header"
+    },
+    "text": {
+      "heading1": "section-title",
+      "heading2": "technique-title",
+      "heading3": "text-xl font-bold mb-3 text-blue-400",
+      "paragraph": "text-base7 leading-relaxed",
+      "caption": "text-sm text-base5",
+      "highlight": "text-blue-400 font-semibold"
+    }
+  }
+}
+
