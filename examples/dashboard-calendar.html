@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Calendário | Vite Presets</title>
+    <script src="../theme-loader.js"></script>
+    <script src="../dist/index.js"></script>
+    <style>
+        .calendar-container {
+            background: var(--background-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .calendar-day:hover {
+            background: var(--primary-color);
+            color: #000;
+        }
+
+        .calendar-day.today {
+            background: var(--primary-color);
+            color: #000;
+        }
+
+        .calendar-day.has-events {
+            position: relative;
+        }
+
+        .calendar-day.has-events::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        /* Dashboard Layout usando Vite Presets */
+        .dashboard-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--background-primary);
+            border-bottom: 1px solid var(--border-primary);
+            z-index: 40;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .dashboard-sidebar {
+            position: fixed;
+            left: 0;
+            top: 64px;
+            bottom: 0;
+            width: 280px;
+            background: var(--background-secondary);
+            border-right: 1px solid var(--border-primary);
+            padding: 24px;
+        }
+
+        .dashboard-main {
+            margin-left: 280px;
+            margin-top: 64px;
+            padding: 24px;
+            min-height: calc(100vh - 64px);
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .sidebar-item {
+            color: var(--text-primary);
+            padding: 12px;
+            border-radius: 8px;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .sidebar-item:hover {
+            background: var(--primary-color);
+            color: #000;
+        }
+
+        .sidebar-item.active {
+            background: var(--primary-color);
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <h1 style="color: var(--primary-color); font-family: var(--font-secondary);">
+            📅 Dashboard - Calendário
+        </h1>
+        <div style="margin-left: auto; display: flex; gap: 16px;">
+            <button class="btn-marketing-primary">+ Novo Evento</button>
+            <button class="btn-marketing-secondary">Configurações</button>
+        </div>
+    </header>
+
+    <!-- Dashboard Sidebar -->
+    <nav class="dashboard-sidebar">
+        <div class="sidebar-menu">
+            <div class="sidebar-item" onclick="navigateTo('dashboard')">
+                📊 Dashboard
+            </div>
+            <div class="sidebar-item active" onclick="navigateTo('calendar')">
+                📅 Calendário
+            </div>
+            <div class="sidebar-item" onclick="navigateTo('tasks')">
+                ✅ Tarefas
+            </div>
+            <div class="sidebar-item" onclick="navigateTo('reports')">
+                📈 Relatórios
+            </div>
+            <div class="sidebar-item" onclick="navigateTo('settings')">
+                ⚙️ Configurações
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Main Content -->
+    <main class="dashboard-main">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <h2 style="color: var(--text-primary); font-size: 1.5rem; font-weight: 600;">
+                        Outubro 2025
+                    </h2>
+                    <div style="display: flex; gap: 8px;">
+                        <button style="padding: 8px 12px; background: var(--background-primary); border: 1px solid var(--border-primary); border-radius: 6px; color: var(--text-primary); cursor: pointer;">‹</button>
+                        <button style="padding: 8px 12px; background: var(--background-primary); border: 1px solid var(--border-primary); border-radius: 6px; color: var(--text-primary); cursor: pointer;">›</button>
+                    </div>
+                </div>
+
+                <div class="calendar-grid">
+                    <!-- Dias da semana -->
+                    <div style="color: var(--text-muted); font-weight: 600; padding: 12px; text-align: center;">Dom</div>
+                    <div style="color: var(--text-muted); font-weight: 600; padding: 12px; text-align: center;">Seg</div>
+                    <div style="color: var(--text-muted); font-weight: 600; padding: 12px; text-align: center;">Ter</div>
+                    <div style="color: var(--text-muted); font-weight: 600; padding: 12px; text-align: center;">Qua</div>
+                    <div style="color: var(--text-muted); font-weight: 600; padding: 12px; text-align: center;">Qui</div>
+                    <div style="color: var(--text-muted); font-weight: 600; padding: 12px; text-align: center;">Sex</div>
+                    <div style="color: var(--text-muted); font-weight: 600; padding: 12px; text-align: center;">Sáb</div>
+
+                    <!-- Dias do mês -->
+                    ${Array.from({ length: 35 }, (_, i) => {
+                        const day = i - 3; // Ajuste para começar no dia certo
+                        const isToday = day === 30; // Exemplo: dia 30 é hoje
+                        const hasEvents = [5, 12, 18, 25].includes(day); // Dias com eventos
+
+                        return `
+                            <div class="calendar-day ${isToday ? 'today' : ''} ${hasEvents ? 'has-events' : ''}" ${day > 0 && day <= 31 ? `onclick="alert('Dia ${day} clicado')"` : ''}>
+                                ${day > 0 && day <= 31 ? day : ''}
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+
+            <!-- Quick Stats Cards -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 32px;">
+                <div class="card-marketing" style="text-align: center; padding: 20px;">
+                    <div style="font-size: 2rem; margin-bottom: 8px;">📅</div>
+                    <div style="color: var(--text-primary); font-weight: 600; margin-bottom: 4px;">Eventos Hoje</div>
+                    <div style="color: var(--primary-color); font-size: 1.5rem; font-weight: 700;">3</div>
+                </div>
+
+                <div class="card-marketing" style="text-align: center; padding: 20px;">
+                    <div style="font-size: 2rem; margin-bottom: 8px;">⏰</div>
+                    <div style="color: var(--text-primary); font-weight: 600; margin-bottom: 4px;">Próximo Evento</div>
+                    <div style="color: var(--primary-color); font-size: 0.9rem;">14:30 - Reunião Equipe</div>
+                </div>
+
+                <div class="card-marketing" style="text-align: center; padding: 20px;">
+                    <div style="font-size: 2rem; margin-bottom: 8px;">✅</div>
+                    <div style="color: var(--text-primary); font-weight: 600; margin-bottom: 4px;">Tarefas Pendentes</div>
+                    <div style="color: var(--primary-color); font-size: 1.5rem; font-weight: 700;">7</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Vite Presets
+        const presets = new VitePresets();
+
+        // Example of using Position.Forge
+        const dockMenuPosition = presets.config.Position.Forge('dock-menu');
+        const customPosition = presets.config.Position.Forge(['absolute', 'bottom']);
+
+        console.log('Dock menu position:', dockMenuPosition);
+        console.log('Custom position:', customPosition);
+
+        // Navigation function
+        function navigateTo(page) {
+            alert(`Navegando para: ${page}`);
+            // In a real app, you would use router navigation
+        }
+
+        // Theme initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Dashboard Calendar page loaded with Vite Presets');
+        });
+    </script>
+</body>
+</html>

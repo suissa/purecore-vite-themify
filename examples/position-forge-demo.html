@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position.Forge() Demo - Vite Presets</title>
+    <script src="../theme-loader.js"></script>
+    <script src="../dist/index.js"></script>
+    <style>
+        .demo-container {
+            padding: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            margin-bottom: 48px;
+            padding: 24px;
+            background: var(--background-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+        }
+
+        .demo-title {
+            color: var(--primary-color);
+            font-family: var(--font-secondary);
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .demo-description {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .position-demo {
+            position: relative;
+            height: 300px;
+            background: var(--background-primary);
+            border: 2px dashed var(--border-primary);
+            border-radius: 8px;
+            margin: 24px 0;
+            overflow: hidden;
+        }
+
+        .positioned-element {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            transition: all 0.3s;
+        }
+
+        .positioned-element:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.5);
+        }
+
+        .code-example {
+            background: var(--background-primary);
+            border: 1px solid var(--border-primary);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            overflow-x: auto;
+        }
+
+        .result-display {
+            background: var(--background-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            background: var(--primary-color);
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .control-btn.active {
+            background: var(--color-primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="color: var(--primary-color); font-family: var(--font-secondary); font-size: 2.5rem; text-align: center; margin-bottom: 48px;">
+            🎯 Position.Forge() Demo
+        </h1>
+
+        <div class="demo-section">
+            <h2 class="demo-title">📖 Como Funciona</h2>
+            <p class="demo-description">
+                O método <code>Position.Forge()</code> aceita dois tipos de entrada:
+            </p>
+            <ul style="color: var(--text-secondary); margin-bottom: 24px;">
+                <li><strong>String:</strong> Nome de um preset existente (ex: 'dock-menu', 'side-panel')</li>
+                <li><strong>Array:</strong> Lista de propriedades CSS para gerar configuração customizada</li>
+            </ul>
+
+            <div class="code-example">
+// Usando preset
+const dockPosition = config.Position.Forge('dock-menu');
+
+// Usando array customizado
+const customPosition = config.Position.Forge(['absolute', 'bottom']);
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="demo-title">🎮 Teste Interativo</h2>
+            <p class="demo-description">
+                Clique nos botões abaixo para ver diferentes configurações de posicionamento em ação.
+            </p>
+
+            <div class="controls">
+                <button class="control-btn" onclick="applyPosition('dock-menu')">Dock Menu</button>
+                <button class="control-btn" onclick="applyPosition('side-panel')">Side Panel</button>
+                <button class="control-btn" onclick="applyPosition('floating-card')">Floating Card</button>
+                <button class="control-btn" onclick="applyPosition('top-bar')">Top Bar</button>
+                <button class="control-btn" onclick="applyPosition(['absolute', 'top', 'right'])">Top Right</button>
+                <button class="control-btn" onclick="applyPosition(['absolute', 'bottom'])">Bottom Absolute</button>
+                <button class="control-btn" onclick="applyPosition(['fixed', 'center'])">Center Fixed</button>
+                <button class="control-btn" onclick="applyPosition('sticky-header')">Sticky Header</button>
+            </div>
+
+            <div class="position-demo" id="positionDemo">
+                <div class="positioned-element" id="demoElement">
+                    POS
+                </div>
+            </div>
+
+            <div class="result-display" id="resultDisplay">
+                Clique em um botão para ver o resultado...
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="demo-title">📋 Presets Disponíveis</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+                <div style="background: var(--background-primary); padding: 16px; border-radius: 8px; border: 1px solid var(--border-primary);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">dock-menu</h3>
+                    <code style="color: var(--text-secondary); font-size: 0.8rem;">
+                        position: absolute;<br>
+                        bottom: 0;<br>
+                        left: 0;<br>
+                        right: 0;<br>
+                        zIndex: 50;
+                    </code>
+                </div>
+
+                <div style="background: var(--background-primary); padding: 16px; border-radius: 8px; border: 1px solid var(--border-primary);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">side-panel</h3>
+                    <code style="color: var(--text-secondary); font-size: 0.8rem;">
+                        position: fixed;<br>
+                        top: 0;<br>
+                        left: 0;<br>
+                        bottom: 0;<br>
+                        width: 320px;<br>
+                        zIndex: 30;
+                    </code>
+                </div>
+
+                <div style="background: var(--background-primary); padding: 16px; border-radius: 8px; border: 1px solid var(--border-primary);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">floating-card</h3>
+                    <code style="color: var(--text-secondary); font-size: 0.8rem;">
+                        position: absolute;<br>
+                        top: 50%;<br>
+                        left: 50%;<br>
+                        transform: translate(-50%, -50%);<br>
+                        zIndex: 20;
+                    </code>
+                </div>
+
+                <div style="background: var(--background-primary); padding: 16px; border-radius: 8px; border: 1px solid var(--border-primary);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">top-bar</h3>
+                    <code style="color: var(--text-secondary); font-size: 0.8rem;">
+                        position: fixed;<br>
+                        top: 0;<br>
+                        left: 0;<br>
+                        right: 0;<br>
+                        zIndex: 40;
+                    </code>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="demo-title">🔧 Configurações Customizadas</h2>
+            <p class="demo-description">
+                Quando você passa um array, cada string é mapeada para uma propriedade CSS específica.
+                O valor padrão para propriedades espaciais (top, right, bottom, left) é sempre '0'.
+            </p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                <div>
+                    <h3 style="color: var(--text-primary); margin-bottom: 12px;">Array Input</h3>
+                    <div class="code-example">
+['absolute', 'bottom']<br>
+↓<br>
+{<br>
+&nbsp;&nbsp;position: 'absolute',<br>
+&nbsp;&nbsp;bottom: '0'<br>
+}
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="color: var(--text-primary); margin-bottom: 12px;">Resultado CSS</h3>
+                    <div class="code-example">
+.element {<br>
+&nbsp;&nbsp;position: absolute;<br>
+&nbsp;&nbsp;bottom: 0;<br>
+}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="demo-title">🎯 Exemplos Práticos</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+                <div style="background: var(--background-primary); padding: 20px; border-radius: 8px; border: 1px solid var(--border-primary);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 12px;">Menu Dock</h4>
+                    <code style="color: var(--text-secondary); font-size: 0.8rem;">
+                        Position.Forge('dock-menu')
+                    </code>
+                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 8px;">
+                        Menu fixo na parte inferior
+                    </p>
+                </div>
+
+                <div style="background: var(--background-primary); padding: 20px; border-radius: 8px; border: 1px solid var(--border-primary);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 12px;">Sidebar</h4>
+                    <code style="color: var(--text-secondary); font-size: 0.8rem;">
+                        Position.Forge('side-panel')
+                    </code>
+                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 8px;">
+                        Painel lateral fixo
+                    </p>
+                </div>
+
+                <div style="background: var(--primary-color); color: #000; padding: 20px; border-radius: 8px;">
+                    <h4 style="margin-bottom: 12px;">Card Flutuante</h4>
+                    <code style="font-size: 0.8rem;">
+                        Position.Forge('floating-card')
+                    </code>
+                    <p style="font-size: 0.8rem; margin-top: 8px; opacity: 0.8;">
+                        Centralizado na tela
+                    </p>
+                </div>
+
+                <div style="background: var(--background-primary); padding: 20px; border-radius: 8px; border: 1px solid var(--border-primary);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 12px;">Header Sticky</h4>
+                    <code style="color: var(--text-secondary); font-size: 0.8rem;">
+                        Position.Forge('sticky-header')
+                    </code>
+                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 8px;">
+                        Header que fica fixo ao rolar
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Vite Presets
+        let presets;
+        let currentConfig = {};
+
+        document.addEventListener('DOMContentLoaded', function() {
+            presets = new VitePresets();
+            console.log('Position.Forge() Demo loaded');
+
+            // Set initial position
+            applyPosition('floating-card');
+        });
+
+        function applyPosition(config) {
+            if (!presets) return;
+
+            // Remove active class from all buttons
+            document.querySelectorAll('.control-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+
+            // Get position configuration
+            const positionConfig = presets.config.Position.Forge(config);
+            currentConfig = positionConfig;
+
+            // Apply to demo element
+            const element = document.getElementById('demoElement');
+            Object.keys(positionConfig).forEach(prop => {
+                if (prop === 'zIndex') {
+                    element.style.zIndex = positionConfig[prop];
+                } else {
+                    element.style[prop] = positionConfig[prop];
+                }
+            });
+
+            // Update result display
+            const resultDisplay = document.getElementById('resultDisplay');
+            resultDisplay.innerHTML = `
+<b>Configuração aplicada:</b><br>
+Input: <code>${JSON.stringify(config)}</code><br><br>
+<b>Resultado Position.Forge():</b><br>
+<code>${JSON.stringify(positionConfig, null, 2)}</code><br><br>
+<b>CSS aplicado:</b><br>
+<code>${Object.entries(positionConfig).map(([key, value]) =>
+    `${key === 'zIndex' ? 'z-index' : key}: ${value};`
+).join('<br>')}</code>
+            `;
+
+            console.log('Position applied:', config, positionConfig);
+        }
+
+        // Keyboard shortcuts for demo
+        document.addEventListener('keydown', function(e) {
+            if (e.key >= '1' && e.key <= '8') {
+                const configs = [
+                    'dock-menu',
+                    'side-panel',
+                    'floating-card',
+                    'top-bar',
+                    ['absolute', 'top', 'right'],
+                    ['absolute', 'bottom'],
+                    ['fixed', 'center'],
+                    'sticky-header'
+                ];
+                applyPosition(configs[parseInt(e.key) - 1]);
+
+                // Simulate button click for visual feedback
+                const buttons = document.querySelectorAll('.control-btn');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                buttons[parseInt(e.key) - 1].classList.add('active');
+            }
+        });
+
+        // Add keyboard hint
+        setTimeout(() => {
+            console.log('🎹 Use 1-8 para testar posições rapidamente');
+        }, 1000);
+    </script>
+</body>
+</html>
